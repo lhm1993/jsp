@@ -1,0 +1,22 @@
+2016年12月27日15:02:37：
+	1. jsp+javaBean 即jsp和java的结合，将界面和业务逻辑分开
+	2. 为什么在返回rs的时候先要转换成  Vector 或者 ArrayList
+	3. 为了使jsp页面可以找到servlet页面，需要在服务器的 web.xml中配置servlet及其映射 名字可以任意给，但是必须好映射中的名字相同，url可以快捷访问
+		servlet-class  包名.类名 （类的路径）
+	4. request.getRequestDispatcher("wel.jsp?user=1001").forward(request, response);这种跳转方式要比
+		response.sendRedirect("wel.jsp?user="+user);这种跳转方式效率高
+	MVC：
+		m——model-java class 来完成（完成数据的处理，是由控制器来调用完成的）
+		v——view-jsp 来完成（完成数据的显示）
+		c——control servlet 来完成（request空间来实现数据的传递，servlet的跳转功能）
+	 在MVC模型中，对于不同的功能实现，会使用多个不同的控制器，比如分页控制器，修改数据的控制器，删除数据的控制器等等
+	 也就是控制器的功能可以是单一的，数量可以是多个的
+	 界面<————>控制器(数量很多的单一功能(翻页控制器、添加数据控制器、修改数据控制器...))<————>java class(Model层的功能脱离Control层，是业务逻辑层)
+	 小项目不适合使用MVC，机关枪打蚊子（小项目直接使用model1比较合适） 
+	 
+	2016年12月28日10:31:29：
+	1.在分页的时候， 将对pageCount pageNow的操作都放在控制器里面完成，最后只是在页面中调用
+	2.数据的传递是在request空间完成的
+	 
+	2016年12月29日09:25:36：
+	1.session是某个浏览器独占的，每一个session ID占用一个session空间，不同的浏览器占不同的空间，相互之间不能访问彼此的空间
